@@ -1,0 +1,74 @@
+---
+title: "Assignment-3"
+author: "Dushyant Goel"
+date: "2024-10-02"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r cars}
+library(tidyverse)
+library(Stat2Data)
+data("Hawks")
+```
+
+# 1. Visualization
+
+## Q1
+
+```{r}
+hawksSmall <-
+drop_na(select(Hawks, Age, Day, Month, Year, CaptureTime, Species ,Wing, Weight, Tail))
+```
+
+## Q2
+
+```{r}
+ggplot(hawksSmall, aes(x=Weight)) + geom_histogram(binwidth = 10.0)
+```
+
+## Q3
+
+```{r}
+ggplot(hawksSmall, aes(x=Tail)) + geom_density(adjust=0.5) +ylab("Count")
+ggplot(hawksSmall, aes(x=Tail)) + geom_density(adjust=2) +ylab("Count")
+```
+
+The plots differ by `bandwidth`, which is a measure of smoothening applied to the underlying histogram data.\
+The plot #1 is less smooth than plot #2, capturing finer details (or noise).\
+Hence, we expect more modes in plot #1\
+
+Plot | Number of modes \
+adjust=0.5 | 4 \
+adjust=2 | 2 \
+
+## Q4
+```{r}
+ggplot(hawksSmall, aes(x=Tail, color=Species)) + geom_density(adjust=2) +ylab("Count")
+```
+
+## Q5
+
+```{r}
+ggplot(hawksSmall, aes(x=Tail, y=Species, fill=Species)) + geom_violin() + xlab("Tail (mm)") +ylab("Density")
+```
+## Q6
+
+```{r}
+ggplot(hawksSmall, aes(y=Weight, x=Tail, colour=Species)) + xlab("Tail (mm)") + ylab("Weight (g)") +geom_point()
+```
+
+1. Aesthetics present are `Weight (g)` along y, `Tail (mm)` along x, `Species` along colour, `Species` along shape.
+2. `geom_point` is the Glyph.
+3. The overlapping colour and shape of the glyph are the visual cues for the species.
+
+## Q7
+```{r}
+
+```
+# Finite probability spaces
