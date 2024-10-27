@@ -135,4 +135,4 @@ ggplot(hawksSmall, aes(y = Weight, x = Tail, colour = Species)) +
 ```
 
 
-
+# 2. Finite probability spaces
